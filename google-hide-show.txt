@@ -1,0 +1,31 @@
+    var isHide = false;
+    var hideShowButton = document.createElement('button');
+    hideShowButton.className = (isHide ?"hide":"show");
+    hideShowButton.title = (isHide?"Hide":"Show");
+    hideShowButton.style.width = "50px"
+    hideShowButton.style.display = "block"
+    hideShowButton.style.textItem = "left";
+    hideShowButton.innerHTML = (isHide?"Show":"Hide");
+    hideShowButton.style.height = "25px"
+    var preTag = document.getElementsByTagName("pre");
+    preTag[0].insertBefore(hideShowButton, preTag[0].firstChild);
+    console.log(preTag);
+
+    function toggleContent() {
+        //console.log("Toggling content",document.getElementsByClassName('playground')[0].children[1].hidden);
+        if(document.getElementsByClassName('playground')[0].children[1].hidden){
+            document.getElementsByClassName('playground')[0].children[1].hidden = false;
+            hideShowButton.innerHTML = "Show";
+            isHide=false;
+            document.getElementsByClassName('playground')[0].children[1].style.display = "none";
+            hideShowButton.className="hide";
+        }else{
+            document.getElementsByClassName('playground')[0].children[1].hidden = true;
+            hideShowButton.innerHTML = "Hide";
+            isHide=true;
+            document.getElementsByClassName('playground')[0].children[1].style.display = "block";
+            hideShowButton.className="show";
+        }
+    }
+
+      hideShowButton.addEventListener('click',toggleContent)
